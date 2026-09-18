@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;460;500;600&family=IBM+Plex+Mono:wght@400;500&family=Rubik+Wet+Paint&display=swap');
+
+@keyframes stagger-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.reveal {
+  opacity: 0;
+  animation: stagger-in 0.4s ease forwards;
+  animation-delay: var(--d, 0s);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    animation: none;
+    opacity: 1;
+  }
+}
+
+@keyframes badge-wiggle {
+  0%, 100% { transform: rotate(-3deg) scale(1); }
+  50% { transform: rotate(3deg) scale(1.06); }
+}
+
+.badge-new {
+  animation: badge-wiggle 1.8s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .badge-new {
+    animation: none;
+  }
+}
+
+:root {
+  --paper: #fdfdfc;
+  --ink: #111111;
+  --muted: rgba(17, 17, 17, 0.4);
+  --rule: rgba(17, 17, 17, 0.14);
+  --accent: #b5502e;
+  --focus-color: rgba(181, 80, 46, 0.4);
+  --selection-color: #fdfdfc;
+  --selection-bg: #b5502e;
+
+  --font-display: 'Inter', -apple-system, sans-serif;
+  --font-body: 'Inter', -apple-system, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+}
+
+body {
+  background-color: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+}
+
+::selection {
+  background-color: var(--selection-bg);
+  color: var(--selection-color);
+}
+
+a {
+  color: var(--accent);
+}
+
+a:focus {
+  outline: 2px solid var(--focus-color);
+  outline-offset: 2px;
+}
+
+/* Global blur linear gradient overlay */
+body::before {
+  content: "";
+  pointer-events: none;
+  z-index: 9999;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 8rem;
+  background: linear-gradient(
+    180deg,
+    var(--paper) 0%,
+    rgba(246, 242, 232, 0.738) 19%,
+    rgba(246, 242, 232, 0.541) 34%,
+    rgba(246, 242, 232, 0.382) 47%,
+    rgba(246, 242, 232, 0.278) 56.5%,
+    rgba(246, 242, 232, 0.194) 65%,
+    rgba(246, 242, 232, 0.126) 73%,
+    rgba(246, 242, 232, 0.075) 80.2%,
+    rgba(246, 242, 232, 0.042) 86.1%,
+    rgba(246, 242, 232, 0.021) 91%,
+    rgba(246, 242, 232, 0.008) 95.2%,
+    rgba(246, 242, 232, 0.002) 98.2%,
+    rgba(246, 242, 232, 0) 100%
+  );
+}
